@@ -1,0 +1,19 @@
+name: Build FAP
+on:
+  push:
+  workflow_dispatch:
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Build with ufbt (Momentum SDK)
+        uses: flipperdevices/flipperzero-ufbt-action@v0.1
+        id: build-app
+        with:
+          sdk-index-url: https://up.momentum-fw.dev/firmware/directory.json
+          sdk-channel: release
+      - uses: actions/upload-artifact@v4
+        with:
+          name: ir_stream-fap
+          path: ${{ steps.build-app.outputs.fap-artifacts }}
