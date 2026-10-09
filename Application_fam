@@ -1,0 +1,8 @@
+App(
+    appid="ir_stream",
+    name="IR Stream Recorder",
+    apptype=FlipperAppType.EXTERNAL,
+    entry_point="ir_stream_main",
+    stack_size=4 * 1024,
+    fap_category="Infrared",
+)
